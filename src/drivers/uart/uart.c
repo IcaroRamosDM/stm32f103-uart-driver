@@ -20,3 +20,8 @@ void uart_write_string(const char *text) {
         text++;
     }
 }
+
+uint8_t uart_read_byte(void) {
+
+    return usart_read_byte();
+}
