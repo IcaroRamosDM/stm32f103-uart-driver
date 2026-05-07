@@ -15,3 +15,13 @@ void app_uart_demo_blocking_echo(void) {
 
     uart_write_byte(received_byte);
 }
+
+void app_uart_demo_non_blocking_echo(void) {
+
+    uint8_t received_byte = 0U;
+
+    if (uart_read_byte_non_blocking(&received_byte)) {
+
+        uart_write_byte(received_byte);
+    }
+}

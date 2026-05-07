@@ -11,12 +11,11 @@ int main(void) {
     gpio_setup();
     uart_init();
 
-    uart_write_string("UART blocking echo ready\r\n");
+    uart_write_string("UART interrupt echo ready\r\n");
 
     while (1) {
 
-        app_uart_demo_blocking_echo();
-        gpio_led_toggle();
+        app_uart_demo_non_blocking_echo();
     }
 
     return 0;

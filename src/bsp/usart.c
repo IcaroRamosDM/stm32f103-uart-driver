@@ -2,6 +2,7 @@
 
 #include "bsp/usart_config.h"
 
+#include <libopencm3/cm3/nvic.h>
 #include <libopencm3/stm32/gpio.h>
 #include <libopencm3/stm32/rcc.h>
 #include <libopencm3/stm32/usart.h>
@@ -35,6 +36,12 @@ void usart_setup(void) {
     usart_enable(BSP_USART_PORT);
 }
 
+void bsp_usart_enable_rx_interrupt(void) {
+
+    nvic_enable_irq(NVIC_USART1_IRQ);
+    usart_enable_rx_interrupt(BSP_USART_PORT);
+}
+
 void usart_write_byte(uint8_t data) {
     
     usart_send_blocking(BSP_USART_PORT, data);
@@ -43,4 +50,9 @@ void usart_write_byte(uint8_t data) {
 uint8_t usart_read_byte(void) {
 
     return (uint8_t)usart_recv_blocking(BSP_USART_PORT);
+}
+
+uint8_t usart_read_received_data_register(void) {
+
+    return (uint8_t)usart_recv(BSP_USART_PORT);
 }
