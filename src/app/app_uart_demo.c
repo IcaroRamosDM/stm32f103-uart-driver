@@ -8,31 +8,31 @@
 #include <stdint.h>
 #include <string.h>
 
-#define APP_UART_DEMO_MESSAGE                    "UART driver OK\r\n"
+#define APP_UART_DEMO_MESSAGE "UART driver OK\r\n"
 
-#define APP_UART_BLINK_COUNT                     3U
-#define APP_UART_BLINK_DELAY_MS                  200U
+#define APP_UART_BLINK_COUNT 3U
+#define APP_UART_BLINK_DELAY_MS 200U
 
-#define APP_UART_COMMAND_BUFFER_SIZE             32U
-#define APP_UART_COMMAND_END_CR                  '\r'
-#define APP_UART_COMMAND_END_LF                  '\n'
-#define APP_UART_COMMAND_BACKSPACE               0x08U
-#define APP_UART_COMMAND_DELETE                  0x7FU
-#define APP_UART_COMMAND_STRING_TERMINATOR       '\0'
+#define APP_UART_COMMAND_BUFFER_SIZE 32U
+#define APP_UART_COMMAND_END_CR '\r'
+#define APP_UART_COMMAND_END_LF '\n'
+#define APP_UART_COMMAND_BACKSPACE 0x08U
+#define APP_UART_COMMAND_DELETE 0x7FU
+#define APP_UART_COMMAND_STRING_TERMINATOR '\0'
 
-#define APP_UART_COMMAND_HELP                    "help"
-#define APP_UART_COMMAND_STATUS                  "status"
-#define APP_UART_COMMAND_LED_ON                  "led on"
-#define APP_UART_COMMAND_LED_OFF                 "led off"
-#define APP_UART_COMMAND_BLINK                   "blink"
+#define APP_UART_COMMAND_HELP "help"
+#define APP_UART_COMMAND_STATUS "status"
+#define APP_UART_COMMAND_LED_ON "led on"
+#define APP_UART_COMMAND_LED_OFF "led off"
+#define APP_UART_COMMAND_BLINK "blink"
 
-#define APP_UART_RESPONSE_HELP                   "\r\nCommands:\r\nhelp\r\nstatus\r\nled on\r\nled off\r\nblink\r\n> "
-#define APP_UART_RESPONSE_STATUS                 "\r\nSystem OK\r\n> "
-#define APP_UART_RESPONSE_LED_ON                 "\r\nLED ON\r\n> "
-#define APP_UART_RESPONSE_LED_OFF                "\r\nLED OFF\r\n> "
-#define APP_UART_RESPONSE_BLINK                  "\r\nBLINK DONE\r\n> "
-#define APP_UART_RESPONSE_UNKNOWN_COMMAND        "\r\nUnknown command\r\n> "
-#define APP_UART_RESPONSE_BACKSPACE_SEQUENCE     "\b \b"
+#define APP_UART_RESPONSE_HELP "\r\nCommands:\r\nhelp\r\nstatus\r\nled on\r\nled off\r\nblink\r\n> "
+#define APP_UART_RESPONSE_STATUS "\r\nSystem OK\r\n> "
+#define APP_UART_RESPONSE_LED_ON "\r\nLED ON\r\n> "
+#define APP_UART_RESPONSE_LED_OFF "\r\nLED OFF\r\n> "
+#define APP_UART_RESPONSE_BLINK "\r\nBLINK DONE\r\n> "
+#define APP_UART_RESPONSE_UNKNOWN_COMMAND "\r\nUnknown command\r\n> "
+#define APP_UART_RESPONSE_BACKSPACE_SEQUENCE "\b \b"
 
 static void app_uart_demo_process_command(const char *command);
 static bool app_uart_demo_is_line_end(uint8_t byte);
@@ -151,6 +151,5 @@ static bool app_uart_demo_is_line_end(uint8_t byte) {
 
 static bool app_uart_demo_is_backspace(uint8_t byte) {
 
-    return ((byte == APP_UART_COMMAND_BACKSPACE) ||
-            (byte == APP_UART_COMMAND_DELETE));
+    return ((byte == APP_UART_COMMAND_BACKSPACE) || (byte == APP_UART_COMMAND_DELETE));
 }

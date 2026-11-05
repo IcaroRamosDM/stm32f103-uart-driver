@@ -5,7 +5,7 @@
 #include "drivers/uart/uart.h"
 
 int main(void) {
-    
+
     clock_setup();
     systick_setup();
     gpio_setup();

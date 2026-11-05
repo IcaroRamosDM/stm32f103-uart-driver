@@ -8,6 +8,7 @@
 
 #include <stdbool.h>
 #include <stdint.h>
+#include <stddef.h>
 
 static uart_buffer_t uart_rx_buffer;
 
@@ -25,6 +26,9 @@ void uart_write_byte(uint8_t data) {
 }
 
 void uart_write_string(const char *text) {
+    if (text == NULL) {
+        return;
+    }
 
     while (*text != '\0') {
 
@@ -34,8 +38,11 @@ void uart_write_string(const char *text) {
 }
 
 uint8_t uart_read_byte(void) {
-
-    return usart_read_byte();
+    uint8_t byte;
+    /* The ISR owns the receive register; both APIs consume its queue. */
+    while (!uart_buffer_pop(&uart_rx_buffer, &byte)) {
+    }
+    return byte;
 }
 
 bool uart_available(void) {

@@ -8,6 +8,7 @@ void uart_init(void);
 void uart_write_byte(uint8_t data);
 void uart_write_string(const char *text);
 
+/* Wait for the ISR queue; RX interrupts must remain enabled. */
 uint8_t uart_read_byte(void);
 
 bool uart_available(void);
